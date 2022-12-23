@@ -18,14 +18,25 @@ class Homepage extends StatelessWidget {
     Icons.access_alarm_outlined,
     Icons.access_alarm_outlined,
   ];
-
+  final List _titles = ['Categories', 'Featured Products'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomTextField(),
           ProductPlacement(),
+          const SizedBox(height: 10),
+          Title(
+            title: _titles[1],
+            color: Colors.black,
+            child: Text(
+              _titles[0],
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
           Expanded(
               flex: 1,
               child: ListView.builder(
@@ -37,6 +48,11 @@ class Homepage extends StatelessWidget {
                   );
                 }),
               )),
+          Title(
+            title: _titles[1],
+            color: Colors.black,
+            child: Text(_titles[1], style: TextStyle(fontSize: 18)),
+          ),
           Expanded(
             flex: 4,
             child: ListView.builder(
@@ -47,7 +63,7 @@ class Homepage extends StatelessWidget {
                 );
               },
             ),
-          )
+          ),
         ],
       ),
     );
