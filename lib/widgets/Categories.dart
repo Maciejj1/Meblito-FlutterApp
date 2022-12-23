@@ -18,7 +18,10 @@ class Categories extends StatelessWidget {
             shape: BoxShape.rectangle,
             color: const Color(0xFF333333),
             borderRadius: BorderRadius.circular(20)),
-        child: Icon(icona),
+        child: Icon(
+          icona,
+          color: Colors.white,
+        ),
       ),
     );
   }

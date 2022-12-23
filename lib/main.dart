@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meble/homepage.dart';
+import 'package:meble/widgets/CustomBottomNavigation.dart';
 
 void main() {
   runApp(const MyApp());
