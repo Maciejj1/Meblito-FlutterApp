@@ -37,7 +37,18 @@ class _ProductsState extends State<Products> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return GridView.builder(
+      itemCount: _productList.length,
+      gridDelegate:
+          new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+      itemBuilder: ((context, index) {
+        return Single_prod(
+            product_name: _productList[index]['name'],
+            product_image: _productList[index]['picture'],
+            product_old_price: _productList[index]['old_price'],
+            product_price: _productList[index]['price']);
+      }),
+    );
   }
 }
 
@@ -56,6 +67,41 @@ class Single_prod extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Card(
+      child: Hero(
+        tag: product_name,
+        child: Material(
+          child: InkWell(
+            onTap: () {},
+            child: GridTile(
+              footer: Container(
+                color: Colors.white,
+                child: ListTile(
+                  leading: Text(
+                    product_name,
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  ),
+                  title: Text(
+                    "$product_price PLN",
+                    style: TextStyle(fontSize: 10),
+                  ),
+                  subtitle: Text(
+                    "$product_old_price PLN",
+                    style: TextStyle(
+                        fontSize: 10,
+                        color: Colors.blue,
+                        decoration: TextDecoration.lineThrough),
+                  ),
+                ),
+              ),
+              child: Image.asset(
+                product_image,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
